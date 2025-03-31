@@ -6,6 +6,8 @@ import DetailsTvShow from './components/details-tv-show/DetailsTvShow'
 import Footer from './components/footer/Footer'
 import Header from './components/header/Header'
 import Search from './components/search/Search'
+import Login from './components/login/Login'
+import Register from './components/register/Register'
 
 function App() {
 
@@ -22,17 +24,17 @@ function App() {
                         <Route path="/tv-shows" element={<CatalogTvShows />} />
                         <Route path="/tv-shows/:tvShowId/details" element={<DetailsTvShow />} />
                         {/* <Route element={<AuthGuard />}> */}
-                            <Route path="/tv-shows/create" element={<CreateTvShow />} />
-                            <Route path="/tv-shows/search" element={<Search />} />
+                        <Route path="/tv-shows/create" element={<CreateTvShow />} />
+                        <Route path="/tv-shows/search" element={<Search />} />
                             {/* <Route path="/tv-shows/:tvShowId/edit" element={< />} /> */}
                             {/* <Route path="/logout" element={<Logout />} /> */}
-                        {/* </Route> */}
-                        {/* <Route element={<GuestGuard />}>
-                            <Route path="/login" element={<Login />} />
-                            <Route path="/register" element={<Register />} /> */}
-                        {/* </Route> */}
+                       
+                       
+                        <Route path="/login" element={<Login />} /> 
+                        <Route path="/register" element={<Register />} />
+                  
                         
-                    </Routes>
+     </Routes>
 
 
 

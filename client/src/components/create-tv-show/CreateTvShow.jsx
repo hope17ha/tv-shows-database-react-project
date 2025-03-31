@@ -1,19 +1,8 @@
-import { useNavigate } from 'react-router';
-import { useCreateTvShow } from '../api/tvShowApi';
+
+
 
 export default function CreateTvShow() {
-
-    const navigate = useNavigate();
-    const { create: createTvShow } = useCreateTvShow();
     
-
-    const submitAction = async (formData) => {
-        const tvShowData = Object.fromEntries(formData);
-
-        await createTvShow(tvShowData);
-
-        navigate('/tv-shows');
-    };
 
     return (
         <section id="create-page">
@@ -22,7 +11,7 @@ export default function CreateTvShow() {
                         <h2>"Today, I consider myself the luckiest man on the face of the earth." -The Pride of the Yankees, 1942</h2>
                     </div>
 
-                    <form action={submitAction} className="createForm">
+                    <form action="" className="createForm">
                         <h2>Add TV Show</h2>
                         <ul className="noBullet">
                             <li>
