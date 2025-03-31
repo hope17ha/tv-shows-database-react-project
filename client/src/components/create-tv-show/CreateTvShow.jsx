@@ -1,7 +1,14 @@
+import apiTvShows from "../../api/apiTvShows";
 
 
 
 export default function CreateTvShow() {
+
+    const submitAction = async (formData) => {
+        const data = Object.fromEntries(formData);
+        
+        const result = await apiTvShows.create(data);
+    }
     
 
     return (
@@ -11,7 +18,7 @@ export default function CreateTvShow() {
                         <h2>"Today, I consider myself the luckiest man on the face of the earth." -The Pride of the Yankees, 1942</h2>
                     </div>
 
-                    <form action="" className="createForm">
+                    <form action={submitAction} className="createForm">
                         <h2>Add TV Show</h2>
                         <ul className="noBullet">
                             <li>

@@ -1347,7 +1347,29 @@
     };
     var seedData = {
         tvShows: {
+            "f0cc3dc7-3869-41d3-aef1-7d45b1caf599" : {
+            
+                title: "Euphoria",
+                genre: "Drama",
+                seasons: "2",
+                director: "Sam Levinson",
+                year: "2019",
+                image: "https://i.ebayimg.com/images/g/dPkAAOSw6LZec910/s-l400.jpg",
+                rating: "8",
+                description: "Rue Bennett is a drug addict fresh from rehab, who's struggling to stay clean and make sense of her future. Her life changes drastically when she meets Jules Vaughn, a trans girl who recently moved to town following her parents' divorce.",
+            
+        },
+        "9c868e09-1572-47c5-a6cc-0827127fc975" : {
 
+            title: 'The Last of Us',
+            genre: 'Survival',
+            seasons: '1',
+            director: 'Craig Mazin',
+            year: '2023',
+            image: 'https://i0.wp.com/bloody-disgusting.com/wp-content/uploads/2022/11/last-of-us-tv-1.png?ssl=1',
+            rating: '9',
+            description: "After a global pandemic destroys civilization, a hardened survivor takes charge of a 14-year-old girl who may be humanity's last hope."
+          },
         },
     	recipes: {
     		"3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
