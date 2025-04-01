@@ -42,7 +42,7 @@ export default function Login() {
                             </li>
 
                             <li id="center-btn">
-                                <button id="login-btn" disabled={isPending}>Login</button>
+                                <button id="login-btn" >Login</button>
                             </li>
                         </ul>
                     </form>

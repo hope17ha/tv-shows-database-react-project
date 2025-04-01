@@ -1,6 +1,27 @@
-import { Link } from 'react-router'
+import {  useNavigate } from 'react-router'
+import { useRegister } from '../../api/authApi';
+import { useContext } from 'react';
+import { UserContext } from '../../contexts/UserContext';
 
 export default function Register() {
+
+    const navigate = useNavigate();
+    const { register } = useRegister()
+    const { userLoginHandler } = useContext(UserContext)
+
+    const registerHandler = async (formData) => {
+         const { email, password, rePassword } = Object.fromEntries(formData);
+
+        if (password !== rePassword){
+            return;
+        }   
+        const authData = await register(email, password);
+
+        userLoginHandler(authData);
+
+        navigate('/');
+        
+    }
 
     return (
 
@@ -9,7 +30,8 @@ export default function Register() {
                     <div className="info-register">
                         <h2>"I hope you're pleased with yourselves. We could all have been killed — or worse, expelled. Now if you don't mind, I'm going to bed."</h2>
                     </div>
-                    <form action="#" method="" className="registerForm">
+                    <form action={registerHandler}
+                    className="registerForm">
                         <h2>Register</h2>
                         <ul className="noBullet">
                             <li>
