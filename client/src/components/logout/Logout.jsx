@@ -7,7 +7,7 @@ export default function Logout () {
 
     
         return isLoggedOut
-        ? <Navigate to="/tv-shows" />
+        ? <Navigate to="/" />
         : null; 
 
     
