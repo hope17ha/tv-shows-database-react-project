@@ -1,11 +1,13 @@
 import { useActionState, useContext } from "react";
 import { useLogin } from "../../api/authApi";
 import { UserContext } from "../../contexts/UserContext";
+import { useNavigate } from "react-router";
 
 export default function Login() {
 
     const { login } = useLogin();
-    const { userLoginHandler } = useContext(UserContext)
+    const { userLoginHandler } = useContext(UserContext);
+    const navigate = useNavigate();
 
     const loginFormHandler = async (prevState, formData) => {
         const entries = Object.fromEntries(formData);
@@ -13,6 +15,8 @@ export default function Login() {
         const result = await login(entries.email, entries.password);
 
         userLoginHandler(result);
+
+        navigate('/tv-shows');
 
         
 
@@ -42,7 +46,7 @@ export default function Login() {
                             </li>
 
                             <li id="center-btn">
-                                <button id="login-btn" >Login</button>
+                                <button id="login-btn" disabled={isPending}>Login</button>
                             </li>
                         </ul>
                     </form>

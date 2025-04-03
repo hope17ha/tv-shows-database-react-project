@@ -8,11 +8,26 @@ import Header from './components/header/Header'
 import Search from './components/search/Search'
 import Login from './components/login/Login'
 import Register from './components/register/Register'
+import Logout from './components/logout/Logout'
+import { useState } from 'react'
+import { UserContext } from './contexts/UserContext'
+import HomePage from './components/home/HomePage'
 
 function App() {
 
+  const [user, setUser] = useState({});
+
+  const userLoginHandler = (result) => {
+    setUser(result);
+  }
+
+  const userLogoutHandler = () => {
+    setUser({});
+  }
+
   return (
-    <>
+    <UserContext.Provider value={{...user, userLoginHandler, userLogoutHandler}}>
+
      <div id="box">
         <Header />
 
@@ -20,18 +35,18 @@ function App() {
      <main>
 
      <Routes>
-                        {/* <Route index element={<Home />} /> */}
+                        <Route index element={<HomePage />} />
                         <Route path="/tv-shows" element={<CatalogTvShows />} />
                         <Route path="/tv-shows/:tvShowId/details" element={<DetailsTvShow />} />
                         {/* <Route element={<AuthGuard />}> */}
                         <Route path="/tv-shows/create" element={<CreateTvShow />} />
                         <Route path="/tv-shows/search" element={<Search />} />
                             {/* <Route path="/tv-shows/:tvShowId/edit" element={< />} /> */}
-                            {/* <Route path="/logout" element={<Logout />} /> */}
                        
                        
                         <Route path="/login" element={<Login />} /> 
                         <Route path="/register" element={<Register />} />
+                        <Route path="/logout" element={<Logout />} />
                   
                         
      </Routes>
@@ -42,7 +57,8 @@ function App() {
 
      <Footer />
       
-    </>
+    
+    </UserContext.Provider>
   )
 }
 

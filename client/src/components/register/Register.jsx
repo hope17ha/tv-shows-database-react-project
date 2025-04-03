@@ -35,19 +35,19 @@ export default function Register() {
                         <h2>Register</h2>
                         <ul className="noBullet">
                             <li>
-                                <label for="email">Email:</label>
+                                <label htmlFor="email">Email:</label>
                                 <input type="text" className="inputFields" id="email" name="email"/>
                             </li>
                             <li>
-                                <label for="password">Username:</label>
-                                <input type="password" className="inputFields" id="username" name="username" />
+                                <label htmlFor="username">Username:</label>
+                                <input type="text" className="inputFields" id="username" name="username" />
                             </li>
                             <li>
-                                <label for="password">Password:</label>
+                                <label htmlFor="password">Password:</label>
                                 <input type="password" className="inputFields" id="password" name="password"/>
                             </li>
                             <li>
-                                <label for="repeat-password">Repeat-Password:</label>
+                                <label htmlFor="repeat-password">Repeat-Password:</label>
                                 <input type="password" className="inputFields" id="repeat-password" name="rePassword"/>
                             </li>
                             <li id="center-btn">

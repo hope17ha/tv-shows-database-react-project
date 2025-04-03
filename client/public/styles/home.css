@@ -1,0 +1,17 @@
+.home-page {
+    text-align: center;
+    padding: 50px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .home-page h1 {
+    font-size: 36px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .home-page p {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+  }
