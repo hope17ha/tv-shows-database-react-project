@@ -1,9 +1,16 @@
-import { useParams } from "react-router";
+import { Link, useParams } from "react-router";
 import { useShow } from "../../api/tvShowsApi";
+import useAuth from "../../hooks/useAuth";
 
 export default function DetailsTvShow() {
     const { tvShowId } = useParams();
     const { show } = useShow(tvShowId);
+    const { userId } = useAuth()
+
+    const isOwner = userId === show._ownerId;
+
+    console.log(userId);
+    console.log(show._ownerId);
 
     return (
         <section id="details-page">
@@ -37,12 +44,14 @@ export default function DetailsTvShow() {
                     <img src={show.image} alt={show.title} />
                 </div>
             </div>
+            {isOwner && (
             <ul className="noBullet">
                 <li id="center-btn">
-                    <button id="login-btn">Edit</button>
+                <Link to={`/tv-shows/${tvShowId}/edit`} id="login-btn">Edit</Link>
                     <button id="login-btn">Delete</button>
                 </li>
             </ul>
+            )}
         </section>
     );
 }

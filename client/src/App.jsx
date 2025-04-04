@@ -14,6 +14,7 @@ import { UserContext } from './contexts/UserContext'
 import HomePage from './components/home/HomePage'
 import AuthGuard from './guards/AuthGuard'
 import GuestGuard from './guards/GuestGuard'
+import EditTvShow from './components/edit-tv-show/EditTvShow'
 
 function App() {
 
@@ -45,7 +46,8 @@ function App() {
                         <Route element={<AuthGuard />}>
                             <Route path="/tv-shows/create" element={<CreateTvShow />} />
                             <Route path="/logout" element={<Logout />} />
-                            <Route path="/tv-shows/:tvShowId/edit" element={<DetailsTvShow/>} />
+                            <Route path="/tv-shows/:tvShowId/details" element={<DetailsTvShow/>} />
+                            <Route path="/tv-shows/:tvShowId/edit" element={<EditTvShow />} />
                          </Route>
                          <Route element={<GuestGuard />}>
                             <Route path="/login" element={<Login />} />
