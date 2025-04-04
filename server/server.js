@@ -1346,9 +1346,11 @@
     	}
     };
     var seedData = {
-        tvShows: [{
+        tvShows: {
+
+            "3587274d-0fg4-4afb-8ca9-5b256ae3b348": {
             
-            
+               
                 title: "Euphoria",
                 genre: "Drama",
                 seasons: "2",
@@ -1357,10 +1359,11 @@
                 image: "https://i.ebayimg.com/images/g/dPkAAOSw6LZec910/s-l400.jpg",
                 rating: "8",
                 description: "Rue Bennett is a drug addict fresh from rehab, who's struggling to stay clean and make sense of her future. Her life changes drastically when she meets Jules Vaughn, a trans girl who recently moved to town following her parents' divorce.",
+                _id: "3587274d-0fg4-4afb-8ca9-5b256ae3b348",
             
         },
-        {
-
+        "9a272c90-b7la-4e09-b000-7ec923248f66": {
+        
             title: 'The Last of Us',
             genre: 'Survival',
             seasons: '1',
@@ -1368,9 +1371,10 @@
             year: '2023',
             image: 'https://i0.wp.com/bloody-disgusting.com/wp-content/uploads/2022/11/last-of-us-tv-1.png?ssl=1',
             rating: '9',
-            description: "After a global pandemic destroys civilization, a hardened survivor takes charge of a 14-year-old girl who may be humanity's last hope."
+            description: "After a global pandemic destroys civilization, a hardened survivor takes charge of a 14-year-old girl who may be humanity's last hope.",
+            _id: "9a272c90-b7la-4e09-b000-7ec923248f66",
           },
-        ],
+    },
     	recipes: {
     		"3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
     			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",

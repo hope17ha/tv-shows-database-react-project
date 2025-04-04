@@ -45,7 +45,7 @@ function App() {
                         <Route element={<AuthGuard />}>
                             <Route path="/tv-shows/create" element={<CreateTvShow />} />
                             <Route path="/logout" element={<Logout />} />
-                            {/* <Route path="/tv-shows/:tvShowId/edit" element={< />} /> */}
+                            <Route path="/tv-shows/:tvShowId/edit" element={<DetailsTvShow/>} />
                          </Route>
                          <Route element={<GuestGuard />}>
                             <Route path="/login" element={<Login />} />

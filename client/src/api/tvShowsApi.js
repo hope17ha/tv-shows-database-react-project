@@ -14,3 +14,18 @@ export const useShows = () => {
 
     return { shows };
 };
+
+export const useShow = (tvShowId) => {
+    const [show, setShow] = useState({});
+
+    useEffect(() => {
+        requester.get(`${baseUrl}/${tvShowId}`)
+            .then(setShow);
+    }, [tvShowId])
+
+    
+
+    return {
+        show,
+    };
+};
