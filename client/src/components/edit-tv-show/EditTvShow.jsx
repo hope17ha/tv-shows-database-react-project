@@ -1,7 +1,27 @@
+import { Navigate, useNavigate, useParams } from "react-router";
+import { useEditShow, useShow } from "../../api/tvShowsApi";
 
 
 export default function EditTvShow() {
 
+    const navigate = useNavigate()
+    const { tvShowId } = useParams();
+    const { show } = useShow(tvShowId);
+    const { edit } = useEditShow();
+   
+
+    
+  
+    console.log(show);
+    const formAction = async (formData) => {
+        const showData = Object.fromEntries(formData);
+
+        edit(tvShowId, showData);
+
+        navigate(`/tv-shows/${tvShowId}/details`);
+    }
+
+  
     return (
 
         <section id="edit-page">
@@ -10,37 +30,42 @@ export default function EditTvShow() {
                         <h2>"One ring to rule them all, one ring to find them, one ring to bring them all and in the darkness bind them."</h2>
                     </div>
 
-                    <form action="#" method="" className="editForm">
+                    <form action={formAction} className="editForm">
                         <h2>Edit Post</h2>
                         <ul className="noBullet">
                             <li>
-                                <label for="title">Title:</label>
-                                <input type="text" className="inputFields" id="title" name="" value="The Little Marmaid" />
+                                <label htmlFor="title">Title:</label>
+                                <input type="text" className="inputFields" id="title" name="title" defaultValue={show.title} />
                             </li>
                             <li>
-                                <label for="genre">Genre:</label>
-                                <input type="text" className="inputFields" id="genre" name="" value="Fantasy" />
+                                <label htmlFor="genre">Genre:</label>
+                                <input type="text" className="inputFields" id="genre" name="genre" defaultValue={show.genre} />
                             </li>
                             <li>
-                                <label for="director">Director:</label>
-                                <input type="text" className="inputFields" id="director" name="" value="Rob Marshall" />
+                                <label htmlFor="director">Director:</label>
+                                <input type="text" className="inputFields" id="director" name="director" defaultValue={show.director} />
                             </li>
                             <li>
-                                <label for="date">Year:</label>
-                                <input type="number" className="inputFields" id="year" name="" value="2023" />
+                                <label htmlFor="date">Year:</label>
+                                <input type="number" className="inputFields" id="year" name="year" defaultValue={show.year} />
                             </li>
                             <li>
-                                <label for="image">Movie Poster:</label>
-                                <input type="text" className="inputFields" id="image" name="" value="https://m.media-amazon.com/images/M/MV5BYTUxYjczMWUtYzlkZC00NTcwLWE3ODQtN2I2YTIxOTU0ZTljXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_FMjpg_UX1000_.jpg" />
+                                <label htmlFor="image">Movie Poster:</label>
+                                <input type="text" className="inputFields" id="image" name="image" defaultValue={show.image} />
                             </li>
                             <li>
-                                <label for="image">Rating:</label>
-                                <input type="text" className="inputFields" id="rating" name="" value="4" />
+                                <label htmlFor="image">Rating:</label>
+                                <input type="text" className="inputFields" id="rating" name="rating" defaultValue={show.rating} />
                             </li>
                             <li>
-                                <label for="description">Description:</label>
-                                <textarea id="description" className="inputFields" name="description">The youngest of King Triton's daughters, Ariel is a beautiful and spirited young mermaid with a thirst for adventure. Longing to find out more about the world beyond the sea, Ariel visits the surface and falls for the dashing Prince Eric. Following her heart, she makes a deal with the evil sea witch, Ursula, to experience life on land.</textarea>
+                                <label htmlFor="description">Description:</label>
+                                <textarea id="description" className="inputFields" name="description" defaultValue={show.description}></textarea>
                             </li>
+                            <li>
+                                <label htmlFor="seasons">Seasons:</label>
+                                <input type="text" className="inputFields" id="seasons" name="seasons" defaultValue={show.seasons} />
+                            </li>
+                            
                             <li id="center-btn">
                                 <button id="edit-btn">Edit</button>
                             </li>

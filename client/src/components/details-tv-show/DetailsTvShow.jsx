@@ -30,7 +30,7 @@ export default function DetailsTvShow() {
                             <div className="second-info">
                                 <p className="card-year">Year: {show.year}</p>
                                 <p className="card-ranking">
-                                    Rating:{" "}
+                                    Rating:
                                     <span id="stars">{show.rating}</span>
                                 </p>
                             </div>

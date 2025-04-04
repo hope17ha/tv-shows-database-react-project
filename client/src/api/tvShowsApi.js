@@ -33,9 +33,10 @@ export const useShow = (tvShowId) => {
 
 export const useEditShow = () => {
     
+    const { request } = useAuth();
 
-    const edit = (tvShowId, tvShowData) =>
-        requester.put(`${baseUrl}/${tvShowId}`, { ...tvShowData, _id: tvShowId });
+    const edit = async (tvShowId, tvShowData) =>
+        await request.put(`${baseUrl}/${tvShowId}`, { ...tvShowData, _id: tvShowId });
 
     return {
         edit,

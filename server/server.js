@@ -1370,7 +1370,7 @@
             _ownerId: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
             title: 'The Last of Us',
             genre: 'Survival',
-            seasons: '1',
+            seasons: "1",
             director: 'Craig Mazin',
             year: '2023',
             image: 'https://i0.wp.com/bloody-disgusting.com/wp-content/uploads/2022/11/last-of-us-tv-1.png?ssl=1',
