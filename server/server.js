@@ -1346,8 +1346,8 @@
     	}
     };
     var seedData = {
-        tvShows: {
-            "f0cc3dc7-3869-41d3-aef1-7d45b1caf599" : {
+        tvShows: [{
+            
             
                 title: "Euphoria",
                 genre: "Drama",
@@ -1359,7 +1359,7 @@
                 description: "Rue Bennett is a drug addict fresh from rehab, who's struggling to stay clean and make sense of her future. Her life changes drastically when she meets Jules Vaughn, a trans girl who recently moved to town following her parents' divorce.",
             
         },
-        "9c868e09-1572-47c5-a6cc-0827127fc975" : {
+        {
 
             title: 'The Last of Us',
             genre: 'Survival',
@@ -1370,7 +1370,7 @@
             rating: '9',
             description: "After a global pandemic destroys civilization, a hardened survivor takes charge of a 14-year-old girl who may be humanity's last hope."
           },
-        },
+        ],
     	recipes: {
     		"3987279d-0ad4-4afb-8ca9-5b256ae3b298": {
     			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
