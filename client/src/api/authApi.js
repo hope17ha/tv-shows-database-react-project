@@ -19,9 +19,12 @@ export const useLogin = () => {
 
 export const useRegister = () => {
 
-    const register = (email, password) => {
-        requester.post(`${baseUrl}/register`, {email, password})
-    }
+    const register = (email, password) => 
+        requester.post(
+            `${baseUrl}/register`,
+         {email, password}
+         );
+    
 
     return {
         register,

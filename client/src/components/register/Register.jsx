@@ -3,6 +3,8 @@ import { useRegister } from '../../api/authApi';
 import { useContext } from 'react';
 import { UserContext } from '../../contexts/UserContext';
 
+import { toast } from 'react-toastify'
+
 export default function Register() {
 
     const navigate = useNavigate();
@@ -12,14 +14,23 @@ export default function Register() {
     const registerHandler = async (formData) => {
          const { email, password, rePassword } = Object.fromEntries(formData);
 
-        if (password !== rePassword){
+         if (password !== rePassword){
+            
+            toast.error('Passwords must match!')
             return;
-        }   
-        const authData = await register(email, password);
+        }  
 
-        userLoginHandler(authData);
+        try {
+            const authData = await register(email, password);
+            userLoginHandler(authData);
+            navigate('/');
+            
+        } catch (err) {
+            toast.error(err.message)
+        }
+       
 
-        navigate('/');
+
         
     }
 

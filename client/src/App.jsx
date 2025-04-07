@@ -15,6 +15,8 @@ import HomePage from './components/home/HomePage'
 import AuthGuard from './guards/AuthGuard'
 import GuestGuard from './guards/GuestGuard'
 import EditTvShow from './components/edit-tv-show/EditTvShow'
+import ErrorBoundary from '../src/components/error-boundary/ErrorBoundary';
+import { ToastContainer } from 'react-toastify'
 
 function App() {
 
@@ -29,8 +31,9 @@ function App() {
   }
 
   return (
+      <ErrorBoundary>
     <UserContext.Provider value={{...user, userLoginHandler, userLogoutHandler}}>
-
+      
      <div id="box">
         <Header />
 
@@ -61,9 +64,10 @@ function App() {
      </main>
 
      <Footer />
-      
+     <ToastContainer />
     
     </UserContext.Provider>
+     </ErrorBoundary>
   )
 }
 
