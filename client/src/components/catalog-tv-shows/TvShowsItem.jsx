@@ -9,19 +9,19 @@ export default function TvShowsCatalogItem({
 }) {
     return (
 
-        <div class="band" >
+        <div className="band" >
 
             
-            <div class="flip flip-vertical">
-                <div class="front">
+            <div className="flip flip-vertical">
+                <div className="front">
                     <img src={image}
                         alt={title} />
                 </div>
-                <div class="back">
+                <div className="back">
                     <h1>{title}</h1>
                     <h2>Genre: {genre}</h2>
                     <p>Description: {description}</p>
-                    <Link to={`/tv-shows/${_id}/details`} class="details">Details</Link>
+                    <Link to={`/tv-shows/${_id}/details`} className="details">Details</Link>
                 </div>
             </div>
             </div>

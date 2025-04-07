@@ -13,8 +13,8 @@ export default function CatalogTvShows(){
 
                 {shows.length > 0
                 ? shows.map(show => <TvShowsCatalogItem key={show._id} {...show} />)
-                : <div class="no-posts">
-                <p class="no-offer">There are no added TV Shows yet...</p>
+                : <div className="no-posts">
+                <p className="no-offer">There are no added TV Shows yet...</p>
                 </div>
             }
                 

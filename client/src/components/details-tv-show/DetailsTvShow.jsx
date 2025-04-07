@@ -1,6 +1,9 @@
 import { Link, useNavigate, useParams } from "react-router";
 import { useDeleteShow, useShow } from "../../api/tvShowsApi";
 import useAuth from "../../hooks/useAuth";
+import 'tailwindcss';
+import Comments from "./Comments";
+import CommentsList from "./CommentsList";
 
 export default function DetailsTvShow() {
     const { tvShowId } = useParams();
@@ -24,6 +27,7 @@ export default function DetailsTvShow() {
     const isOwner = userId === show._ownerId;
 
     return (
+        <>
         <section id="details-page">
             <div className="main_card">
                 <div className="card_left">
@@ -64,5 +68,8 @@ export default function DetailsTvShow() {
             </ul>
             )}
         </section>
+        <CommentsList />
+                <Comments />
+          </>
     );
 }
