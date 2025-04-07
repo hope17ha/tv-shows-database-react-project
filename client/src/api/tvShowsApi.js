@@ -42,3 +42,14 @@ export const useEditShow = () => {
         edit,
     }
 };
+
+export const useCreateShow = () => {
+    const { request } = useAuth();
+
+    const create = (showData) =>
+        request.post(baseUrl, showData);
+
+    return {
+        create,
+    }
+};

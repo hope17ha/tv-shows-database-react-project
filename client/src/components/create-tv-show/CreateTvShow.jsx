@@ -1,13 +1,18 @@
-// import apiTvShows from "../../api/apiTvShows";
-
+import { useNavigate } from "react-router";
+import { useCreateShow } from "../../api/tvShowsApi";
 
 
 export default function CreateTvShow() {
 
+    const { create } = useCreateShow();
+    const navigate = useNavigate();
+
     const submitAction = async (formData) => {
         const data = Object.fromEntries(formData);
         
-        const result = await apiTvShows.create(data);
+        await create(data);
+
+        navigate('/tv-shows')
     }
     
 
@@ -23,35 +28,35 @@ export default function CreateTvShow() {
                         <ul className="noBullet">
                             <li>
                                 <label for="title">Title:</label>
-                                <input type="text" className="inputFields" id="title" name="title"  />
+                                <input required type="text" className="inputFields" id="title" name="title"  />
                             </li>
                             <li>
                                 <label for="genre">Genre:</label>
-                                <input type="text" className="inputFields" id="genre" name="genre"  />
+                                <input required type="text" className="inputFields" id="genre" name="genre"  />
                             </li>
                             <li>
                                 <label for="director">Seasons:</label>
-                                <input type="text" className="inputFields" id="director" name="seasons" />
+                                <input required type="text" className="inputFields" id="director" name="seasons" />
                             </li>
                             <li>
                                 <label for="director">Director:</label>
-                                <input type="text" className="inputFields" id="director" name="director" />
+                                <input required type="text" className="inputFields" id="director" name="director" />
                             </li>
                             <li>
                                 <label for="date">Year:</label>
-                                <input type="text" className="inputFields" id="year" name="year" />
+                                <input required type="text" className="inputFields" id="year" name="year" />
                             </li>
                             <li>
                                 <label for="image">TV Show Poster:</label>
-                                <input type="text" className="inputFields" id="image" name="image"/>
+                                <input required type="text" className="inputFields" id="image" name="image"/>
                             </li>
                             <li>
                                 <label for="image">Rating:</label>
-                                <input type="text" className="inputFields" id="rating" name="rating"  />
+                                <input required type="text" className="inputFields" id="rating" name="rating"  />
                             </li>
                             <li>
                                 <label for="description">Description:</label>
-                                <textarea id="description" className="inputFields" name="description"></textarea>
+                                <textarea required id="description" className="inputFields" name="description"></textarea>
                             </li>
                          
                             <li id="center-btn">
