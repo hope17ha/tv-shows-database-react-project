@@ -1,16 +1,27 @@
-import { Link, useParams } from "react-router";
-import { useShow } from "../../api/tvShowsApi";
+import { Link, useNavigate, useParams } from "react-router";
+import { useDeleteShow, useShow } from "../../api/tvShowsApi";
 import useAuth from "../../hooks/useAuth";
 
 export default function DetailsTvShow() {
     const { tvShowId } = useParams();
     const { show } = useShow(tvShowId);
     const { userId } = useAuth()
-
+    const { deleteShow } = useDeleteShow();
+    const navigate = useNavigate();
+    
+    const showDeleteClickHandler = async () => {
+        const hasConfirm = confirm(`Are you sure you want to delete ${show.title} TV-Show?`);
+        
+        if (!hasConfirm) {
+            return;
+        }
+        
+        await deleteShow(tvShowId);
+        
+        navigate('/tv-shows');
+    };
+    
     const isOwner = userId === show._ownerId;
-
-    console.log(userId);
-    console.log(show._ownerId);
 
     return (
         <section id="details-page">
@@ -48,7 +59,7 @@ export default function DetailsTvShow() {
             <ul className="noBullet">
                 <li id="center-btn">
                 <Link to={`/tv-shows/${tvShowId}/edit`} id="login-btn">Edit</Link>
-                    <button id="login-btn">Delete</button>
+                    <button id="login-btn" onClick={showDeleteClickHandler}>Delete</button>
                 </li>
             </ul>
             )}

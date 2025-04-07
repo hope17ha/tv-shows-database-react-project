@@ -43,6 +43,17 @@ export const useEditShow = () => {
     }
 };
 
+export const useDeleteShow = () => {
+    const { request } = useAuth();
+
+    const deleteShow = (tvShowId) =>
+        request.delete(`${baseUrl}/${tvShowId}`);
+
+    return {
+        deleteShow,
+    }
+};
+
 export const useCreateShow = () => {
     const { request } = useAuth();
 
