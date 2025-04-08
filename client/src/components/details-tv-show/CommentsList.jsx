@@ -1,9 +1,9 @@
-import { useEffect } from "react";
-import { useComments } from "../../api/commentsApi";
 
-
-export default function CommentsList() {
-    const { comments } = useComments();
+export default function CommentsList(
+    {
+        comments,
+    }
+) {
 
 
     return (
@@ -16,18 +16,18 @@ export default function CommentsList() {
 
                 <div className="comment-form">
                     {comments.length > 0 ? (
-                        comments.map(({ _id, comment, author }) => (
+                        comments.map((comment) => (
                             <div
-                                key={_id}
+                                key={comment._id}
                                 className="comment-id"
                             >
-                                {/* Bubble-style Comment Box */}
+                         
                                 <div className="comment-author">
                                     <p className="comment-author">
-                                        {author.email}
+                                        {comment.author.email}
                                     </p>
                                     <p className="comment-content">
-                                        {comment.content}
+                                        {comment.comment}
                                     </p>
                                 </div>
                             </div>

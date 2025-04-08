@@ -1,22 +1,26 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
 import useAuth from "../hooks/useAuth";
 
 const baseUrl = 'http://localhost:3030/data/comments';
 
-export const useComments = () => {
-    const [comments, setComments] = useState([]);
-
-    const { tvShowId } = useParams();
-    
+export const useComments = (tvShowId) => {
     const { request } = useAuth();
+    const [comments, setComments] = useState([]);
 
     useEffect(() => {
         request.get(`${baseUrl}?where=tvShowId%3D%22${tvShowId}%22&load=author%3D_ownerId%3Ausers`)
             .then(setComments)
     }, []);
-    
-    return { comments };
+
+
+    const addComment = (commentData) => {
+        setComments(prevComments => [...prevComments, commentData]); // Add new comment to the state
+    };
+
+    return {
+        comments,
+        addComment
+    };
 };
 
 export const useCreateComment = () => {
@@ -46,4 +50,3 @@ export const useCreateComment = () => {
         create,
       };
     };
-
