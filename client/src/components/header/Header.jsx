@@ -19,6 +19,7 @@ export default function Header() {
                     {email ? (
                         <>
                             <Link to="/tv-shows/create">Create TV Series</Link>
+                            <Link to="/profile">Profile</Link>
                             <Link to="/logout">Logout</Link>
                         </>
                     ) : (

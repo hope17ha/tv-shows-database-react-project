@@ -2,8 +2,8 @@ import { useOptimistic, startTransition } from "react"; // Ensure you're importi
 import { v4 as uuid } from 'uuid';
 import { useDeleteShow, useShow } from "../../api/tvShowsApi";
 import { Link, useNavigate, useParams } from "react-router";
-import CommentsList from "./CommentsList";
-import CommentsCreate from "./CommentsCreate";
+import CommentsList from "../comments/CommentsList";
+import CommentsCreate from "../comments/CommentsCreate";
 import { useComments, useCreateComment } from "../../api/commentsApi";
 import useAuth from "../../hooks/useAuth";
 
@@ -91,7 +91,7 @@ export default function DetailsTvShow() {
                 )}
             </section>
 
-            <CommentsList comments={comments} />
+            <CommentsList comments={comments}/>
             <CommentsCreate
                 tvShowId={tvShowId}
                 onCreate={commentCreateHandler}

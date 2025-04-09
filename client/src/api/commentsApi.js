@@ -25,6 +25,32 @@ export const useComments = (tvShowId) => {
     };
 };
 
+export const useComment = (commentId) => {
+    const { request } = useAuth();
+    const [comment, setComment] = useState({});
+
+    useEffect(() => {
+        request.get(`${baseUrl}/${commentId}`)
+            .then(setComment);
+    }, [commentId])
+
+
+    return {
+        comment,
+    };
+}
+  
+export const useUpdateComment = () => {
+    
+    const { request } = useAuth();
+
+    const update = async (commentId, commentData) =>
+        await request.put(`${baseUrl}/${commentId}`, { ...commentData, _id: commentId });
+
+    return {
+        update,
+    }
+};
 
 export const useCreateComment = () => {
     const { request } = useAuth();

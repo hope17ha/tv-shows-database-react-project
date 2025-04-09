@@ -11,7 +11,7 @@ export default function Register() {
     const { userLoginHandler } = useUserContext();
 
     const registerHandler = async (formData) => {
-         const { email, password, rePassword } = Object.fromEntries(formData);
+         const { email, username, password, rePassword } = Object.fromEntries(formData);
 
          if (password !== rePassword){
             
@@ -20,7 +20,7 @@ export default function Register() {
         }  
 
         try {
-            const authData = await register(email, password);
+            const authData = await register(email, username, password);
             userLoginHandler(authData);
             navigate('/');
             

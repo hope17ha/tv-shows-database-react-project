@@ -1,10 +1,11 @@
+import { Link, useParams } from "react-router";
+import { useComment } from "../../api/commentsApi";
 
 export default function CommentsList(
     {
         comments,
     }
 ) {
-
 
     return (
         <>
@@ -30,13 +31,19 @@ export default function CommentsList(
                                         {comment.comment}
                                     </p>
                                 </div>
+                                <Link to={`/tv-shows/comments/${comment._id}/edit`}  className="submit-btn" >Edit</Link>
+                                 <button type="submit" className="submit-btn">Delete</button>
                             </div>
                         ))
-                    ) : (
+                    )
+                
+                     : (
                         <p className="no-comments">
                             No comments yet.
                         </p>
                     )}
+
+                
                 </div>
             </div>
         </>
