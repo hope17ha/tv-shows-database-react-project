@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
+import { useParams } from "react-router";
 
 const baseUrl = 'http://localhost:3030/data/comments';
+
 
 export const useComments = (tvShowId) => {
     const { request } = useAuth();
@@ -23,30 +25,28 @@ export const useComments = (tvShowId) => {
     };
 };
 
+
 export const useCreateComment = () => {
-    const [comments, setComments] = useState([]);
     const { request } = useAuth();
 
-    const create = (tvShowId, comment) => {
+    const create = (tvShowId, comment, author) => {
         const commentData = {
+            
           tvShowId,
           comment,
+          author
         };
     
         // Post the comment and update the local comments state
         return request
           .post(baseUrl, commentData) // Adjust this URL based on your API
-          .then(() => {
-            // Optimistically add the new comment to the list
-            setComments((prevComments) => [...prevComments, commentData]);
-          })
-          .catch((error) => {
-            console.error('Error posting comment:', error);
-          });
-      };
+    }
+          
     
       return {
-        comments, // Return the comments state to use in the component
         create,
       };
     };
+
+
+

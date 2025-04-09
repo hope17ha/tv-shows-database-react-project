@@ -1,7 +1,6 @@
 import {  useNavigate } from 'react-router'
 import { useRegister } from '../../api/authApi';
-import { useContext } from 'react';
-import { UserContext } from '../../contexts/UserContext';
+import { useUserContext } from '../../contexts/UserContext';
 
 import { toast } from 'react-toastify'
 
@@ -9,7 +8,7 @@ export default function Register() {
 
     const navigate = useNavigate();
     const { register } = useRegister()
-    const { userLoginHandler } = useContext(UserContext)
+    const { userLoginHandler } = useUserContext();
 
     const registerHandler = async (formData) => {
          const { email, password, rePassword } = Object.fromEntries(formData);

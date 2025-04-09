@@ -27,6 +27,10 @@ const requester = async (method, url, data, options = {}) => {
         throw result;
     }
 
+    if (response.status === 403){
+        localStorage.removeItem('auth');
+    }
+
     const result = await response.json();
 
     return result;

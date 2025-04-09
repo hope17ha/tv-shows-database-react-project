@@ -10,12 +10,11 @@ import useAuth from "../../hooks/useAuth";
 export default function DetailsTvShow() {
     const { tvShowId } = useParams();
     const { show } = useShow(tvShowId);
-    const { email, userId } = useAuth();
+    const { email, userId, username } = useAuth();
     const { deleteShow } = useDeleteShow();
     const { create } = useCreateComment();
     const navigate = useNavigate();
     const { comments, addComment } = useComments(tvShowId);
-    const [optimisticComments, setOptimisticComments] = useOptimistic(comments, (state, newComment) => [...state, newComment]);
 
     const showDeleteClickHandler = async () => {
         const hasConfirm = confirm(`Are you sure you want to delete ${show.title} TV-Show?`);
@@ -28,31 +27,23 @@ export default function DetailsTvShow() {
         navigate('/tv-shows');
     };
 
-    const commentCreateHandler = async (formData) => {
-        const comment = formData.get('comment');
-
-        // Create optimistic comment
-        const newOptimisticComment = {
-            _id: uuid(),
-            _ownerId: userId,
-            tvShowId,
-            comment,
+    const commentCreateHandler = async (newComment) => {
+        // Server update
+        const commentResult = await create(tvShowId, newComment, email);
+    
+    
+        // Transform the commentResult into the expected format for your state
+        const transformedComment = {
+            ...commentResult, // Spread other fields like _ownerId, tvShowId, etc.
             author: {
-                email,
+                _id: userId,
+                email: email,
+                username: username,
             }
         };
-        
-        
-        startTransition(() => {
-            setOptimisticComments(newOptimisticComment);
-        });
-        console.log(optimisticComments);
-
-        // Server update
-        const commentResult = await create(tvShowId, comment);
-
+    
         // Local state update
-        addComment({ ...commentResult });
+        addComment(transformedComment);
     };
 
     const isOwner = userId === show._ownerId;
@@ -100,7 +91,7 @@ export default function DetailsTvShow() {
                 )}
             </section>
 
-            <CommentsList comments={optimisticComments} />
+            <CommentsList comments={comments} />
             <CommentsCreate
                 tvShowId={tvShowId}
                 onCreate={commentCreateHandler}

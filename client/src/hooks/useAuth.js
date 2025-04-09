@@ -1,9 +1,8 @@
-import {  useContext } from "react";
-import { UserContext } from "../contexts/UserContext";
+import { useUserContext } from "../contexts/UserContext";
 import requester from "../utils/requester";
 
 export default function useAuth() {
-    const {accessToken , ...authData} = useContext(UserContext);
+    const {accessToken , ...authData} = useUserContext();
 
     const requestWrapper = (method, url, data, options = {}) => {
         const authOptions = {
@@ -13,6 +12,8 @@ export default function useAuth() {
                 ...options.headers
             }
         };
+
+        
 
         return requester.baseRequest(method, url, data, accessToken ? authOptions : options);
     };

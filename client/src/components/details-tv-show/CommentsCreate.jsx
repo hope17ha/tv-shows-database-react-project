@@ -1,16 +1,19 @@
 
 
 export default function CommentsCreate({ onCreate }) {
-  const handleSubmit = (event) => {
-    event.preventDefault(); // Prevents the form from reloading the page
-    const formData = new FormData(event.target);
-    onCreate(formData); // Calls the onCreate function passed as prop
-  };
+  const commentAction = async (formData) => {
+    const comment = formData.get('comment');
+
+  
+    onCreate(comment);
+}
+
+
    
   return (
     <div className="comment">
       <h2 className="comment-add">Leave a Comment</h2>
-      <form onSubmit={handleSubmit}>
+      <form action={commentAction}>
         <label htmlFor="comments"></label>
         <textarea
           placeholder="Write your comment here..."
