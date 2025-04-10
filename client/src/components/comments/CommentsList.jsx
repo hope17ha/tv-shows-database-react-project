@@ -1,16 +1,28 @@
 import { Link, useNavigate, useParams } from "react-router";
 import { useUserContext } from "../../contexts/UserContext";
-import { useDeleteComment } from "../../api/commentsApi";
+import { useComments, useDeleteComment } from "../../api/commentsApi";
+import useAuth from "../../hooks/useAuth";
+import { useEffect, useState } from "react";
 
 export default function CommentsList(
-    {
-        comments,
-    }
 ) {
 
+    const baseUrl = 'http://localhost:3030/data/comments';
     const { tvShowId } = useParams();
     const { _id } = useUserContext();
     const { deleteComment } = useDeleteComment();
+    const { request } = useAuth();
+
+    const [comments, setComments] = useState([]);
+
+    const fetchComments = async () => {
+            request.get(`${baseUrl}?where=tvShowId%3D%22${tvShowId}%22&load=author%3D_ownerId%3Ausers`)
+            .then(setComments)
+  };
+
+    useEffect(() => {
+        fetchComments();
+    }, [tvShowId]);
     
     const showDeleteClickHandler = async (commentId) => {
 
@@ -21,8 +33,8 @@ export default function CommentsList(
         }
 
         await deleteComment(commentId);
+        fetchComments();
 
-        window.location.reload();
     };
 
     return (
