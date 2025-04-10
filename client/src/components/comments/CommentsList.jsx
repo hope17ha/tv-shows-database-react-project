@@ -1,11 +1,29 @@
-import { Link, useParams } from "react-router";
-import { useComment } from "../../api/commentsApi";
+import { Link, useNavigate, useParams } from "react-router";
+import { useUserContext } from "../../contexts/UserContext";
+import { useDeleteComment } from "../../api/commentsApi";
 
 export default function CommentsList(
     {
         comments,
     }
 ) {
+
+    const { tvShowId } = useParams();
+    const { _id } = useUserContext();
+    const { deleteComment } = useDeleteComment();
+    
+    const showDeleteClickHandler = async (commentId) => {
+
+        const hasConfirm = confirm(`Are you sure you want to delete this comment?`);
+
+        if (!hasConfirm) {
+            return;
+        }
+
+        await deleteComment(commentId);
+
+        window.location.reload();
+    };
 
     return (
         <>
@@ -31,8 +49,18 @@ export default function CommentsList(
                                         {comment.comment}
                                     </p>
                                 </div>
-                                <Link to={`/tv-shows/comments/${comment._id}/edit`}  className="submit-btn" >Edit</Link>
-                                 <button type="submit" className="submit-btn">Delete</button>
+                                {comment._ownerId === _id && (
+                                    <>
+                                <Link to={`/tv-shows/${tvShowId}/comments/${comment._id}/edit`}  className="submit-btn" >Edit</Link>
+                                <button
+                                type="button"
+                                className="submit-btn"
+                                onClick={() => showDeleteClickHandler(comment._id)}
+                                >
+                                 Delete
+                                </button>
+                                 </>
+                                )}
                             </div>
                         ))
                     )

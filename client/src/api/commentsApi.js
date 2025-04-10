@@ -74,5 +74,16 @@ export const useCreateComment = () => {
       };
     };
 
+    export const useDeleteComment = () => {
+        const { request } = useAuth();
+    
+        const deleteComment = (commentId) =>
+            request.delete(`${baseUrl}/${commentId}`);
+    
+        return {
+            deleteComment,
+        }
+    };
+
 
 
