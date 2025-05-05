@@ -30,7 +30,7 @@ export default function EditCommentPage(
           };
     
         addOrUpdateComment(updatedComment);
-        navigate("..");
+        navigate(`/tv-shows/${tvShowId}/details`);
     };
     
 

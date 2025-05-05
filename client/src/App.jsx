@@ -17,6 +17,7 @@ import UserProvider from "./providers/UserProvider";
 import ProfilePage from "./components/profile-page/ProfilePage";
 import EditCommentPage from "./components/comments/CommentEdit";
 import DetailsTvShowWrapper from "./components/details-tv-show/DetailsTvShowWrapper";
+import CommentsEditWrapper from "./components/comments/CommentEditWrapper";
 
 function App() {
     return (
@@ -31,12 +32,14 @@ function App() {
                     <Route
                         path="/tv-shows/:tvShowId/details"
                         element={<DetailsTvShowWrapper />}
-                    >
-                        <Route
-                            path="/tv-shows/:tvShowId/details/comments/:commentId/edit"
-                            element={<EditCommentPage />}
-                        />
-                    </Route>
+                    />
+
+                    <Route
+                        path="/tv-shows/:tvShowId/details/comments/:commentId/edit"
+                        element={
+                            <CommentsEditWrapper /> // ⬅️ New wrapper that includes CommentsProvider
+                        }
+                    />
                     <Route path="/tv-shows/search" element={<Search />} />
 
                     <Route element={<AuthGuard />}>
