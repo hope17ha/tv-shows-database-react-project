@@ -27,35 +27,35 @@ export default function CreateTvShow() {
                         <h2>Add TV Show</h2>
                         <ul className="noBullet">
                             <li>
-                                <label for="title">Title:</label>
+                                <label htmlFor="title">Title:</label>
                                 <input required type="text" className="inputFields" id="title" name="title"  />
                             </li>
                             <li>
-                                <label for="genre">Genre:</label>
+                                <label htmlFor="genre">Genre:</label>
                                 <input required type="text" className="inputFields" id="genre" name="genre"  />
                             </li>
                             <li>
-                                <label for="director">Seasons:</label>
+                                <label htmlFor="director">Seasons:</label>
                                 <input required type="text" className="inputFields" id="director" name="seasons" />
                             </li>
                             <li>
-                                <label for="director">Director:</label>
+                                <label htmlFor="director">Director:</label>
                                 <input required type="text" className="inputFields" id="director" name="director" />
                             </li>
                             <li>
-                                <label for="date">Year:</label>
+                                <label htmlFor="date">Year:</label>
                                 <input required type="text" className="inputFields" id="year" name="year" />
                             </li>
                             <li>
-                                <label for="image">TV Show Poster:</label>
+                                <label htmlFor="image">TV Show Poster:</label>
                                 <input required type="text" className="inputFields" id="image" name="image"/>
                             </li>
                             <li>
-                                <label for="image">Rating:</label>
+                                <label htmlFor="image">Rating:</label>
                                 <input required type="text" className="inputFields" id="rating" name="rating"  />
                             </li>
                             <li>
-                                <label for="description">Description:</label>
+                                <label htmlFor="description">Description:</label>
                                 <textarea required id="description" className="inputFields" name="description"></textarea>
                             </li>
                          

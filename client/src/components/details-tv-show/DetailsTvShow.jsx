@@ -1,9 +1,11 @@
-import { useDeleteShow, useShow } from "../../api/tvShowsApi";
 import { Link, useNavigate, useParams } from "react-router";
+import { useShow, useDeleteShow } from "../../api/tvShowsApi";
 import CommentsList from "../comments/CommentsList";
 import CommentsCreate from "../comments/CommentsCreate";
 import { useComments, useCreateComment } from "../../api/commentsApi";
+import { useCommentsContext } from "../../contexts/CommentContext";
 import useAuth from "../../hooks/useAuth";
+import { Outlet } from "react-router"; 
 
 export default function DetailsTvShow() {
     const { tvShowId } = useParams();
@@ -11,37 +13,30 @@ export default function DetailsTvShow() {
     const { email, userId, username } = useAuth();
     const { deleteShow } = useDeleteShow();
     const { create } = useCreateComment();
+    const { comments, addOrUpdateComment } = useCommentsContext();
     const navigate = useNavigate();
-    const { comments, addComment } = useComments(tvShowId);
+   
 
     const showDeleteClickHandler = async () => {
         const hasConfirm = confirm(`Are you sure you want to delete ${show.title} TV-Show?`);
-
-        if (!hasConfirm) {
-            return;
-        }
-
+        if (!hasConfirm) return;
         await deleteShow(tvShowId);
-        navigate('/tv-shows');
+        navigate("/tv-shows");
     };
 
     const commentCreateHandler = async (newComment) => {
-        // Server update
         const commentResult = await create(tvShowId, newComment, email);
-    
-    
-        // Transform the commentResult into the expected format for your state
+
         const transformedComment = {
-            ...commentResult, // Spread other fields like _ownerId, tvShowId, etc.
+            ...commentResult,
             author: {
                 _id: userId,
-                email: email,
-                username: username,
-            }
+                email,
+                username,
+            },
         };
-    
-        // Local state update
-        addComment(transformedComment);
+
+        addOrUpdateComment(transformedComment);
     };
 
     const isOwner = userId === show._ownerId;
@@ -89,12 +84,13 @@ export default function DetailsTvShow() {
                 )}
             </section>
 
-            <CommentsList/>
+            <CommentsList comments={comments}/>
             <CommentsCreate
                 tvShowId={tvShowId}
                 onCreate={commentCreateHandler}
                 email={email}
             />
+            <Outlet />
         </>
     );
 }
