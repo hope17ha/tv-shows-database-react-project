@@ -40,7 +40,6 @@ function App() {
                             <CommentsEditWrapper /> // ⬅️ New wrapper that includes CommentsProvider
                         }
                     />
-                    <Route path="/tv-shows/search" element={<Search />} />
 
                     <Route element={<AuthGuard />}>
                         <Route

@@ -15,7 +15,7 @@ export default function Header() {
                 <ul className="menu">
                     <Link to="/">Home</Link>
                     <Link to="/tv-shows">Catalog</Link>
-                    <Link to="/tv-shows/search">Search</Link>
+             
                     {email ? (
                         <>
                             <Link to="/tv-shows/create">Create TV Series</Link>

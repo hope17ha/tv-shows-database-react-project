@@ -51,17 +51,6 @@ export const useProfileDetails = () => {
 }
 }
 
-export const useEditProfileDetails = () => {
-    const { request } = useAuth();
-
-    const edit = async (profileData) =>
-        await request.put(`${baseUrl}/me`, { profileData });
-
-    return {
-        edit,
-    }
-}
-
 export const useLogout = () => {
     const { accessToken, userLogoutHandler } = useUserContext();
 
