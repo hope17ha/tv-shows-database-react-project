@@ -6,8 +6,6 @@
 @import url('./create-edit.css');
 @import url('./details.css');
 @import url('./404.css');
-@import url('./about.css');
-@import url('./attach.css');
 @import "tailwindcss";
 @import url('./comment.css');
 @import url('./profile.css');

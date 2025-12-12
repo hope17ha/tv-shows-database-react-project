@@ -60,6 +60,7 @@
     cursor: pointer;
     font-size: 16px;
     transition: all 0.3s ease;
+    outline: none;
   }
   
   .comment-submit-btn:hover {
@@ -92,6 +93,7 @@
   /* Submit button styling */
   .submit-btn {
     padding: 10px 20px;
+    text-align: center;
     background-color: #B5838D;
     color: white;
     font-size: 16px;
@@ -100,13 +102,16 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: 100%; /* Make button span the full width */
+    width: auto;
+    display: block;
+    margin: 0 auto;
   }
   
   /* Hover effect for submit button */
   .submit-btn:hover {
-    background-color: #8d5d66; /* Darker blue when hovering */
-  }
+    background-color: #8d5d66; /* slightly darker on hover */
+    transform: translateY(-2px); /* subtle lift effect */
+}
   
   /* Optional: Add focus styles for the submit button */
   .submit-btn:focus {

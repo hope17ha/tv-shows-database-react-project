@@ -5,7 +5,7 @@ export default function Footer(){
     return (
 
         <footer>
-        © React Project
+        © {new Date().getFullYear()} React Project
         </footer>
 
     )
