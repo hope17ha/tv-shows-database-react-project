@@ -5,18 +5,51 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 50px;
+    padding: 30px;
     font-family: Arial, sans-serif;
+  
   }
+
+  .auth-links {
+    font-size: 16px;
+    margin: 10px 0 20px 0;
+}
+
+.auth-links a {
+    color: #B5838D;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 8px;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+}
   
   .home-page h1 {
     font-size: 36px;
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
   
   .home-page p {
     font-size: 18px;
     color: #555;
-    line-height: 1.6;
+    line-height: 1.4;
+    margin-bottom: 10px;
   }
+
+  .details {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #B5838D;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.details:hover {
+    background-color: #8d5d66;
+}

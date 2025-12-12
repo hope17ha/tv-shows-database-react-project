@@ -10,7 +10,9 @@ export default function Header() {
                 <a href="/">TV Shows</a>
             </h1>
             <nav>
+              
                 <img src="/public/images/logo.webp" alt="logo" />
+              
 
                 <ul className="menu">
                     <Link to="/">Home</Link>
