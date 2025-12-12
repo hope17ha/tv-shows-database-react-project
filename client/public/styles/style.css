@@ -9,4 +9,5 @@
 @import url('./about.css');
 @import url('./attach.css');
 @import "tailwindcss";
-@import url('./comment.css')
+@import url('./comment.css');
+@import url('./profile.css');

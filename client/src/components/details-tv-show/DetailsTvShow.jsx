@@ -5,7 +5,7 @@ import CommentsCreate from "../comments/CommentsCreate";
 import { useComments, useCreateComment } from "../../api/commentsApi";
 import { useCommentsContext } from "../../contexts/CommentContext";
 import useAuth from "../../hooks/useAuth";
-import { Outlet } from "react-router"; 
+import { Outlet } from "react-router";
 
 export default function DetailsTvShow() {
     const { tvShowId } = useParams();
@@ -15,10 +15,11 @@ export default function DetailsTvShow() {
     const { create } = useCreateComment();
     const { comments, addOrUpdateComment } = useCommentsContext();
     const navigate = useNavigate();
-   
 
     const showDeleteClickHandler = async () => {
-        const hasConfirm = confirm(`Are you sure you want to delete ${show.title} TV-Show?`);
+        const hasConfirm = confirm(
+            `Are you sure you want to delete ${show.title} TV-Show?`
+        );
         if (!hasConfirm) return;
         await deleteShow(tvShowId);
         navigate("/tv-shows");
@@ -58,7 +59,9 @@ export default function DetailsTvShow() {
                                     </p>
                                 </div>
                                 <div className="second-info">
-                                    <p className="card-year">Year: {show.year}</p>
+                                    <p className="card-year">
+                                        Year: {show.year}
+                                    </p>
                                     <p className="card-ranking">
                                         Rating:
                                         <span id="stars">{show.rating}</span>
@@ -66,25 +69,38 @@ export default function DetailsTvShow() {
                                 </div>
                             </div>
 
-                            <p className="disc">Description: {show.description}</p>
-                            <p className="card-category">Seasons: {show.seasons}</p>
+                            <p className="disc">
+                                Description: {show.description}
+                            </p>
+                            <p className="card-category">
+                                Seasons: {show.seasons}
+                            </p>
+
+                            {isOwner && (
+                                <div className="details-buttons">
+                                    <Link
+                                        to={`/tv-shows/${tvShowId}/edit`}
+                                        className="btn"
+                                    >
+                                        Edit
+                                    </Link>
+                                    <button
+                                        className="btn"
+                                        onClick={showDeleteClickHandler}
+                                    >
+                                        Delete
+                                    </button>
+                                </div>
+                            )}
                         </div>
                     </div>
                     <div className="card_right">
                         <img src={show.image} alt={show.title} />
                     </div>
                 </div>
-                {isOwner && (
-                    <ul className="noBullet">
-                        <li id="center-btn">
-                            <Link to={`/tv-shows/${tvShowId}/edit`} id="login-btn">Edit</Link>
-                            <button id="login-btn" onClick={showDeleteClickHandler}>Delete</button>
-                        </li>
-                    </ul>
-                )}
             </section>
 
-            <CommentsList comments={comments}/>
+            <CommentsList comments={comments} />
             <CommentsCreate
                 tvShowId={tvShowId}
                 onCreate={commentCreateHandler}

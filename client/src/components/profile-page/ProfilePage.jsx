@@ -1,45 +1,35 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useProfileDetails } from '../../api/authApi';
-// import { Link } from 'react-router';
+import { Link } from 'react-router'
+
 
 export default function ProfilePage() {
 
     
 
     const { profile } = useProfileDetails();
-    // const { edit } = useEditProfileDetails();
-  // Set initial profile data
- 
-
-  // State to store profile data
-  const [isEditing, setIsEditing] = useState(false);
-
-
-  // // Toggle editing mode
-  // const toggleEdit = () => {
-  //   setIsEditing(!isEditing);
-
-    
-  // };
 
   return (
     <div className="profile-container">
-    <h1>Profile Page</h1>
-    
-    <form className="profile-form">
-      <div className="profile-info">
-        
-          <span>USERNAME: {profile.username}</span>
+
+  <div className="profile-card">
+    <h1>My Profile</h1>
+    <div className="profile-info">
+      <span>Username: {profile.username}</span>
+    </div>
+
+    <div className="profile-info">
+      <span>Email: {profile.email}</span>
+    </div>
+
   
-      </div>
-      
-      <div className="profile-info">
-      
-          <span>EMAIL: {profile.email}</span>
-    
-      </div>
-    </form>
+    <div className="profile-actions">
+    <Link to="/logout">
+      <button>Logout</button>
+    </Link>
+    </div>
   </div>
+</div>
   );
 };
 

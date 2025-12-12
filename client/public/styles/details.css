@@ -88,44 +88,40 @@
   line-height: 27px;
 }
 
-.social-btn {
-  margin-left: -10px;
-  margin-top: 2em;
+.card_datails {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* растяга съдържанието, бутоните най-отдолу */
+  height: 100%; /* нужно е main_card да има фиксирана височина или min-height */
+  padding: 50px;
 }
 
-.social-btn > .edit-btn,
-.del-btn {
+/* бутони */
+.details-buttons {
+  display: flex;
+  justify-content: center; /* центриране хоризонтално */
+  gap: 15px; /* разстояние между бутоните */
+  margin-top: 20px;
+}
+
+.details-buttons .btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 10px;
+  background-color: #c6ac8f;
   color: black;
   font-weight: bold;
   border: none;
-  padding: 14px;
-  outline: none;
-  font-size: 18px;
-  font-weight: 600;
-  margin-top: 40px;
-  margin-left: 10px;
-  border-radius: 12px;
-  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  -webkit-transition: 300ms ease-in-out;
-  -o-transition: 200ms ease-in-out;
-  transition: 200ms ease-in-out;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease;
 }
 
-.del-btn {
-  background-color: #c6ac8f;
+.details-buttons .btn:hover {
+  transform: scale(1.05);
+  background-color: #b39b88;
 }
 
-.edit-btn {
-  background-color: #c6ac8f;
-}
-
-.edit-btn:hover,
-.del-btn:hover {
-  -webkit-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  transform: scale(1.1);
-}
 
 .card {
   margin-left: 4em;
