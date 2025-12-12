@@ -10,13 +10,64 @@
   }
   
   /* Header for the comment section */
-  .comment-add {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 16px;
-    text-align: center;
+  .comment-create-container {
+    max-width: 600px;
+    margin: 40px auto; /* центриране на секцията */
+    padding: 30px 25px;
+    background: #ffffff; /* бяла карта */
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15); /* мека сенка */
+    font-family: 'Arial', sans-serif;
   }
+  
+  .comment-create-container h2 {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 25px;
+    color: #333;
+  }
+  
+  .comment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .comment-textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    resize: vertical;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .comment-textarea:focus {
+    border-color: #b5838d;
+    box-shadow: 0 0 10px rgba(181,131,141,0.3);
+    outline: none;
+  }
+  
+  .comment-submit-btn {
+    padding: 15px;
+    background-color: #b5838d;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+  
+  .comment-submit-btn:hover {
+    background-color: #8d5d66;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+  
   
   /* Textarea for writing the comment */
   .comment-box {
@@ -127,3 +178,69 @@
   .comment-id + .comment-id {
     margin-top: 16px;
   }
+
+  .edit-comment-page {
+    max-width: 600px;
+    margin: 40px auto; /* центриране на секцията */
+    padding: 30px 25px;
+    background: #ffffff; /* бяла карта */
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15); /* мека сенка */
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .edit-comment-page h1 {
+    text-align: center;
+    font-size: 26px;
+    margin-bottom: 25px;
+    color: #333;
+  }
+  
+  .edit-comment-page form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .edit-comment-page label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+    color: #555;
+  }
+  
+  .edit-comment-page textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    resize: vertical;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .edit-comment-page textarea:focus {
+    border-color: #b5838d;
+    box-shadow: 0 0 10px rgba(181,131,141,0.3);
+    outline: none;
+  }
+  
+  .edit-comment-page .submit-btn {
+    padding: 15px;
+    background-color: #b5838d;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+  
+  .edit-comment-page .submit-btn:hover {
+    background-color: #8d5d66;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  }
+  

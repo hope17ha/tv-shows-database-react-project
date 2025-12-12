@@ -11,15 +11,15 @@ export default function CommentsCreate({ onCreate }) {
 
    
   return (
-    <div className="comment">
-      <h2 className="comment-add">Leave a Comment</h2>
-      <form action={commentAction}>
-        <label htmlFor="comments"></label>
+    <div className="comment-create-container">
+      <h2>Leave a Comment</h2>
+      <form action={commentAction} className="comment-form">
         <textarea
-          placeholder="Write your comment here..."
           name="comment"
+          className="comment-textarea"
+          placeholder="Write your comment here..."
         />
-        <button type="submit" className="submit-btn">
+        <button type="submit" className="comment-submit-btn">
           Submit Comment
         </button>
       </form>
