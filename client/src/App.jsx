@@ -21,47 +21,47 @@ import CommentsEditWrapper from "./components/comments/CommentEditWrapper";
 function App() {
     return (
         <UserProvider>
-         <div id="box">
-        <Header />
+            <div id="box">
+                <Header />
 
-        <main>
-            <Routes>
-                    <Route index element={<HomePage />} />
-                    <Route path="/tv-shows" element={<CatalogTvShows />} />
-                    <Route
-                        path="/tv-shows/:tvShowId/details"
-                        element={<DetailsTvShowWrapper />}
-                    />
-
-                    <Route
-                        path="/tv-shows/:tvShowId/details/comments/:commentId/edit"
-                        element={
-                            <CommentsEditWrapper /> // ⬅️ New wrapper that includes CommentsProvider
-                        }
-                    />
-
-                    <Route element={<AuthGuard />}>
+                <main>
+                    <Routes>
+                        <Route index element={<HomePage />} />
+                        <Route path="/tv-shows" element={<CatalogTvShows />} />
                         <Route
-                            path="/tv-shows/create"
-                            element={<CreateTvShow />}
+                            path="/tv-shows/:tvShowId/details"
+                            element={<DetailsTvShowWrapper />}
                         />
-                        <Route path="/logout" element={<Logout />} />
-                        <Route path="/profile" element={<ProfilePage />} />
+
                         <Route
-                            path="/tv-shows/:tvShowId/edit"
-                            element={<EditTvShow />}
+                            path="/tv-shows/:tvShowId/details/comments/:commentId/edit"
+                            element={
+                                <CommentsEditWrapper /> // ⬅️ New wrapper that includes CommentsProvider
+                            }
                         />
-                    </Route>
-                    <Route element={<GuestGuard />}>
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/register" element={<Register />} />
-                    </Route>
-                </Routes>
+
+                        <Route element={<AuthGuard />}>
+                            <Route
+                                path="/tv-shows/create"
+                                element={<CreateTvShow />}
+                            />
+                            <Route path="/logout" element={<Logout />} />
+                            <Route path="/profile" element={<ProfilePage />} />
+                            <Route
+                                path="/tv-shows/:tvShowId/edit"
+                                element={<EditTvShow />}
+                            />
+                        </Route>
+                        <Route element={<GuestGuard />}>
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/register" element={<Register />} />
+                        </Route>
+                    </Routes>
                 </main>
 
-<Footer />
-<ToastContainer />
-</div>
+                <Footer />
+                <ToastContainer />
+            </div>
         </UserProvider>
     );
 }

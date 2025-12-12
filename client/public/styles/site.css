@@ -5,17 +5,18 @@ html, body, #box {
     padding: 0;
 }
 
+#box {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 html {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 16px;
     box-sizing: border-box;
 }
 
-#box {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
 
 
 body {
@@ -38,17 +39,9 @@ body {
     background-attachment: fixed;
 }
 
-*,
-*::before,
-*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit;
-    
-}
-
 nav,
 footer {
+    position: relative;
     background-color: #B5838D;
     width: 100%;
     display: flex;
@@ -60,6 +53,15 @@ footer {
     margin: 0%;
     height: 70px;
 }
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+    
+}
+
 
 ::-webkit-scrollbar {
     width: 10px;
@@ -117,17 +119,6 @@ nav a:hover {
     border-radius: 10%;
     font-weight: bold;
     background-color: #FFB4A2;
-}
-
-footer {
-    position: absolute;
-    bottom: 0;
-    height: 40px;
-    font-size: 20px;
-    width: 100%;
-    color: black;
-    font-weight: bold;
-    padding: 0.7em 1em;
 }
 
 .error-container {
