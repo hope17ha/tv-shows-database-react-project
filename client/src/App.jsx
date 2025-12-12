@@ -4,7 +4,6 @@ import CatalogTvShows from "./components/catalog-tv-shows/CatalogTvShows";
 import CreateTvShow from "./components/create-tv-show/CreateTvShow";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
-import Search from "./components/search/Search";
 import Login from "./components/login/Login";
 import Register from "./components/register/Register";
 import Logout from "./components/logout/Logout";
@@ -22,11 +21,11 @@ import CommentsEditWrapper from "./components/comments/CommentEditWrapper";
 function App() {
     return (
         <UserProvider>
-            <div id="box">
-                <Header />
-            </div>
-            <main>
-                <Routes>
+         <div id="box">
+        <Header />
+
+        <main>
+            <Routes>
                     <Route index element={<HomePage />} />
                     <Route path="/tv-shows" element={<CatalogTvShows />} />
                     <Route
@@ -58,10 +57,11 @@ function App() {
                         <Route path="/register" element={<Register />} />
                     </Route>
                 </Routes>
-            </main>
+                </main>
 
-            <Footer />
-            <ToastContainer />
+<Footer />
+<ToastContainer />
+</div>
         </UserProvider>
     );
 }

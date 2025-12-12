@@ -1,3 +1,10 @@
+html, body, #box {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 html {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 16px;
@@ -5,16 +12,20 @@ html {
 }
 
 #box {
-    height: auto;
-    width: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
+
 body {
-    position: relative;
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
 }
 
 main {
+    flex: 1;  
     padding-bottom: 5em;
 }
 

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { useEditProfileDetails, useProfileDetails } from '../../api/authApi';
-import { Link } from 'react-router';
+import { useProfileDetails } from '../../api/authApi';
+// import { Link } from 'react-router';
 
 export default function ProfilePage() {
 
     
 
     const { profile } = useProfileDetails();
-    const { edit } = useEditProfileDetails();
+    // const { edit } = useEditProfileDetails();
   // Set initial profile data
  
 
@@ -15,12 +15,12 @@ export default function ProfilePage() {
   const [isEditing, setIsEditing] = useState(false);
 
 
-  // Toggle editing mode
-  const toggleEdit = () => {
-    setIsEditing(!isEditing);
+  // // Toggle editing mode
+  // const toggleEdit = () => {
+  //   setIsEditing(!isEditing);
 
     
-  };
+  // };
 
   return (
     <div className="profile-container">
