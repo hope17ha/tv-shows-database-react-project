@@ -16,6 +16,7 @@ import UserProvider from "./providers/UserProvider";
 import ProfilePage from "./components/profile-page/ProfilePage";
 import DetailsTvShowWrapper from "./components/details-tv-show/DetailsTvShowWrapper";
 import CommentsEditWrapper from "./components/comments/CommentEditWrapper";
+import NotFoundPage from "./components/not-found/404";
 
 function App() {
     return (
@@ -55,6 +56,7 @@ function App() {
                             <Route path="/login" element={<Login />} />
                             <Route path="/register" element={<Register />} />
                         </Route>
+                        <Route path="*" element={<NotFoundPage />} />
                     </Routes>
                 </main>
 
