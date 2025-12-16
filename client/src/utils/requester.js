@@ -1,5 +1,5 @@
 const requester = async (method, url, data, options = {}) => {
-    if (method !== 'GET') {
+    if (method !== "GET") {
         options.method = method;
     }
 
@@ -7,40 +7,43 @@ const requester = async (method, url, data, options = {}) => {
         options = {
             ...options,
             headers: {
-                'Content-Type': 'application/json',
+                "Content-Type": "application/json",
                 ...options.headers,
             },
             body: JSON.stringify(data),
-        }
+        };
     }
 
     const response = await fetch(url, options);
 
-    const responseContentType = response.headers.get('Content-Type');
+    const responseContentType = response.headers.get("Content-Type");
     if (!responseContentType) {
         return;
     }
 
     if (!response.ok) {
-        const result = await response.json()
+        if (response.status === 403) {
+            localStorage.removeItem("auth");
 
-        throw result;
-    }
+            let errorMessage = "Request failed!";
+            try {
+                const errorData = await response.json();
+                errorMessage = errorData?.message || errorMessage;
+            } catch {}
 
-    if (response.status === 403){
-        localStorage.removeItem('auth');
+            throw new Error(errorMessage);
+        }
     }
 
     const result = await response.json();
 
     return result;
-
 };
 
 export default {
-    get: requester.bind(null, 'GET'),
-    post: requester.bind(null, 'POST'),
-    put: requester.bind(null, 'PUT'),
-    delete: requester.bind(null, 'DELETE'),
+    get: requester.bind(null, "GET"),
+    post: requester.bind(null, "POST"),
+    put: requester.bind(null, "PUT"),
+    delete: requester.bind(null, "DELETE"),
     baseRequest: requester,
-}
+};

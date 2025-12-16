@@ -3,15 +3,19 @@ import { useState } from "react";
 export default function usePersistedState(stateKey, initalState) {
     const [state, setState] = useState(() => {
         const persistedState = localStorage.getItem(stateKey);
-        if (!persistedState) {
+        if (!persistedState || persistedState === 'undefined') {
             return typeof initalState === 'function' 
                 ? initalState() 
                 : initalState;
         }
 
-        const persistedStateData = JSON.parse(persistedState);
-
-        return persistedStateData;
+        try {
+            return JSON.parse(persistedState);
+        } catch {
+            return typeof initalState === 'function'
+                ? initalState()
+                : initalState;
+        }
     });
 
     const setPersistedState = (input) => {
@@ -19,10 +23,13 @@ export default function usePersistedState(stateKey, initalState) {
             ? input(state) 
             : input;
 
-        const persistedData = JSON.stringify(data);
+       if (data === undefined) {
+            localStorage.removeItem(stateKey);
+            setState(data);
+            return;
+        }
 
-        localStorage.setItem(stateKey, persistedData);
-
+        localStorage.setItem(stateKey, JSON.stringify(data));
         setState(data);
     };
 

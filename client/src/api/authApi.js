@@ -8,7 +8,7 @@ const baseUrl = "http://localhost:3030/users";
 
 export const useLogin = () => {
 
-    const login = (email, password) => {
+    const login = async (email, password) => {
 
         if (!isValidMail(email)){
             throw new Error ('Please enter a valid email address!')
@@ -18,11 +18,11 @@ export const useLogin = () => {
             throw new Error('Password is required');
         }
 
-        requester.post(
+       const result = await requester.post(
             `${baseUrl}/login`,
             { email, password },
             );
-            
+            return result;
         }
     return {
         login,
