@@ -40,6 +40,20 @@ server/
 bash
 Copy code
 
+## Screenshots
+
+### Register Page
+![Register Screenshot](client/assets/register.png)
+
+### TV Shows Catalog
+![Catalog Screenshot](client/assets/catalog.png)
+
+### Login Page
+![Login Screenshot](client/assets/login.png)
+
+### TV Show Details
+![TV Show Details Screenshot](client/assets/details.png)
+
 ## Installation
 
 ```bash
